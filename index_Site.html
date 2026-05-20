@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aetherius Techno — Hardware without borders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #08080C;
+  --surface: #0C0C14;
+  --border: #1E1E2E;
+  --electric: #4A90E2;
+  --deep: #2A62B0;
+  --abyss: #0E2040;
+  --ivory: #F0ECE4;
+  --muted: #8A8698;
+  --slate: #5A5A6E;
+  --success: #1D9E75;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--void);
+  color: var(--ivory);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── HEADER ─── */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(8, 8, 12, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border);
+  z-index: 1000;
+  animation: slideDown 0.6s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logo-symbol {
+  width: 36px;
+  height: 36px;
+}
+
+.logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.12em;
+  color: var(--ivory);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--electric);
+}
+
+.cta-nav {
+  background: var(--electric);
+  color: var(--void);
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: background 0.2s;
+}
+
+.cta-nav:hover {
+  background: var(--deep);
+  color: var(--ivory);
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(74, 144, 226, 0.15) 0%, transparent 70%);
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(74, 144, 226, 0.12);
+  border: 0.5px solid rgba(74, 144, 226, 0.3);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--electric);
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease 0.4s backwards;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: 0.08em;
+  line-height: 0.95;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--ivory) 0%, var(--electric) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 0.8s ease 0.6s backwards;
+}
+
+.hero p {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  color: var(--muted);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  animation: fadeInUp 0.8s ease 0.8s backwards;
+}
+
+.hero-cta {
+  display: inline-flex;
+  gap: 1rem;
+  animation: fadeInUp 0.8s ease 1s backwards;
+}
+
+.btn {
+  padding: 0.875rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.btn-primary {
+  background: var(--electric);
+  color: var(--void);
+}
+
+.btn-primary:hover {
+  background: var(--deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(74, 144, 226, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ivory);
+  border: 0.5px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--electric);
+  color: var(--electric);
+}
+
+/* ─── TRUST BAR ─── */
+.trust-bar {
+  background: var(--surface);
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  padding: 2rem 0;
+  margin-top: -1px;
+}
+
+.trust-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  text-align: center;
+}
+
+.trust-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: var(--electric);
+  letter-spacing: 0.05em;
+}
+
+.trust-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ─── SECTIONS ─── */
+section {
+  padding: 6rem 0;
+}
+
+.section-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--electric);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.06em;
+  margin-bottom: 3rem;
+}
+
+/* ─── CATEGORIES ─── */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.category-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--electric);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.category-card:hover::before {
+  transform: scaleX(1);
+}
+
+.category-card:hover {
+  border-color: var(--electric);
+  transform: translateY(-4px);
+}
+
+.category-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.category-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.category-count {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--slate);
+}
+
+/* ─── HOW IT WORKS ─── */
+.how-it-works {
+  background: var(--surface);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  position: relative;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: var(--electric);
+  color: var(--void);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  margin: 0 auto 1.5rem;
+}
+
+.step h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ─── FEATURED PRODUCTS ─── */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.product-card:hover {
+  border-color: var(--electric);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(74, 144, 226, 0.2);
+}
+
+.product-image {
+  background: linear-gradient(135deg, var(--abyss) 0%, var(--surface) 100%);
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-badge {
+  display: inline-block;
+  background: rgba(29, 158, 117, 0.15);
+  color: var(--success);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.product-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.product-specs {
+  font-size: 0.875rem;
+  color: var(--slate);
+  margin-bottom: 1rem;
+  font-family: 'Space Mono', monospace;
+}
+
+.product-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--electric);
+  letter-spacing: 0.05em;
+}
+
+.product-cta {
+  padding: 0.5rem 1.25rem;
+  background: transparent;
+  color: var(--electric);
+  border: 0.5px solid var(--electric);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.product-cta:hover {
+  background: var(--electric);
+  color: var(--void);
+}
+
+/* ─── NEWSLETTER ─── */
+.newsletter {
+  background: linear-gradient(135deg, var(--deep) 0%, var(--abyss) 100%);
+  border-radius: 12px;
+  padding: 4rem 3rem;
+  text-align: center;
+}
+
+.newsletter h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.newsletter p {
+  color: var(--muted);
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 0.875rem 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: var(--ivory);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+}
+
+.newsletter-input::placeholder {
+  color: var(--slate);
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: var(--electric);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--surface);
+  border-top: 0.5px solid var(--border);
+  padding: 4rem 0 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-section h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
+
+.footer-section a:hover {
+  color: var(--electric);
+}
+
+.footer-bottom {
+  border-top: 0.5px solid var(--border);
+  padding-top: 2rem;
+  text-align: center;
+  color: var(--slate);
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero { min-height: 80vh; padding-top: 100px; }
+  .newsletter-form { flex-direction: column; }
+  section { padding: 4rem 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <svg class="logo-symbol" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="26" cy="26" r="24" stroke="#4A90E2" stroke-width="0.75" stroke-dasharray="4 2"/>
+        <polygon points="26,8 42,38 10,38" stroke="#4A90E2" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+        <line x1="26" y1="8" x2="26" y2="38" stroke="#4A90E2" stroke-width="0.5" opacity="0.4"/>
+        <line x1="18" y1="23" x2="34" y2="23" stroke="#4A90E2" stroke-width="0.5" opacity="0.4"/>
+        <circle cx="26" cy="8" r="2.5" fill="#4A90E2"/>
+        <circle cx="42" cy="38" r="2.5" fill="#4A90E2"/>
+        <circle cx="10" cy="38" r="2.5" fill="#4A90E2"/>
+        <circle cx="26" cy="26" r="3.5" fill="#0C0C14" stroke="#4A90E2" stroke-width="1.2"/>
+        <circle cx="26" cy="26" r="1.5" fill="#4A90E2"/>
+      </svg>
+      <span class="logo-text">AETHERIUS</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="cta-nav">Get in touch</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="3" fill="#4A90E2"/></svg>
+        Now shipping to 20+ European countries
+      </div>
+      <h1>Premium Asian<br>Hardware.<br>Delivered to Europe.</h1>
+      <p>Direct from manufacturers. No middlemen. Real tech support. Mini-PCs, RAM, monitors and networking gear that ships in 10–15 days.</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn btn-primary">Browse products</a>
+        <a href="#how" class="btn btn-secondary">See how it works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-content">
+      <div class="trust-item">
+        <div class="trust-number">300+</div>
+        <div class="trust-label">Products</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-number">20+</div>
+        <div class="trust-label">EU Countries</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-number">4.9</div>
+        <div class="trust-label">Avg. Rating</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-number">10–15</div>
+        <div class="trust-label">Days Delivery</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section id="products">
+  <div class="container">
+    <p class="section-tag">Product categories</p>
+    <h2 class="section-title">What we ship</h2>
+    <div class="categories-grid">
+      <a href="#" class="category-card">
+        <div class="category-icon">🖥️</div>
+        <div class="category-name">Mini-PCs</div>
+        <div class="category-count">Intel N100 • AMD Ryzen • SBCs</div>
+      </a>
+      <a href="#" class="category-card">
+        <div class="category-icon">💾</div>
+        <div class="category-name">Memory & RAM</div>
+        <div class="category-count">DDR5 • DDR4 • Server ECC</div>
+      </a>
+      <a href="#" class="category-card">
+        <div class="category-icon">🖼️</div>
+        <div class="category-name">Monitors</div>
+        <div class="category-count">4K • Ultrawide • Portable</div>
+      </a>
+      <a href="#" class="category-card">
+        <div class="category-icon">💿</div>
+        <div class="category-name">Storage</div>
+        <div class="category-count">NVMe • SATA SSD • NAS HDD</div>
+      </a>
+      <a href="#" class="category-card">
+        <div class="category-icon">🌐</div>
+        <div class="category-name">Networking</div>
+        <div class="category-count">Switches • APs • SFP modules</div>
+      </a>
+      <a href="#" class="category-card">
+        <div class="category-icon">⌨️</div>
+        <div class="category-name">Peripherals</div>
+        <div class="category-count">Keyboards • Docks • Coolers</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how-it-works">
+  <div class="container">
+    <p class="section-tag">How it works</p>
+    <h2 class="section-title">From order to your door</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>You order</h3>
+        <p>Browse our curated catalog and place your order. We accept PayPal, Stripe and bank transfer.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>We source</h3>
+        <p>We purchase directly from verified manufacturers in China. Quality checked before shipping.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Europe delivery</h3>
+        <p>DHL Express or registered post. Full tracking. Customs handled. 10–15 business days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section>
+  <div class="container">
+    <p class="section-tag">Featured products</p>
+    <h2 class="section-title">Best sellers this month</h2>
+    <div class="products-grid">
+      
+      <div class="product-card">
+        <div class="product-image">🖥️</div>
+        <div class="product-info">
+          <span class="product-badge">In stock</span>
+          <h3 class="product-name">Beelink EQ12 Pro</h3>
+          <p class="product-specs">Intel N100 • 16GB DDR5 • 500GB NVMe</p>
+          <div class="product-price">
+            <span class="price">€189</span>
+            <button class="product-cta">Notify me</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">💾</div>
+        <div class="product-info">
+          <span class="product-badge">In stock</span>
+          <h3 class="product-name">Kingbank DDR5-5600</h3>
+          <p class="product-specs">32GB Kit (2x16GB) • CL46 • Desktop</p>
+          <div class="product-price">
+            <span class="price">€94</span>
+            <button class="product-cta">Notify me</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">🖼️</div>
+        <div class="product-info">
+          <span class="product-badge">Coming soon</span>
+          <h3 class="product-name">KTC H27T22 4K</h3>
+          <p class="product-specs">27" • 144Hz • IPS • USB-C</p>
+          <div class="product-price">
+            <span class="price">€329</span>
+            <button class="product-cta">Notify me</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">💿</div>
+        <div class="product-info">
+          <span class="product-badge">In stock</span>
+          <h3 class="product-name">Lexar NM790</h3>
+          <p class="product-specs">1TB • NVMe Gen4 • 7400MB/s read</p>
+          <div class="product-price">
+            <span class="price">€68</span>
+            <button class="product-cta">Notify me</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">🌐</div>
+        <div class="product-info">
+          <span class="product-badge">Coming soon</span>
+          <h3 class="product-name">TP-Link TL-SG108E</h3>
+          <p class="product-specs">8-port Gigabit • Managed • VLAN</p>
+          <div class="product-price">
+            <span class="price">€42</span>
+            <button class="product-cta">Notify me</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">⌨️</div>
+        <div class="product-info">
+          <span class="product-badge">In stock</span>
+          <h3 class="product-name">Keychron K2 Pro</h3>
+          <p class="product-specs">75% • Hot-swap • RGB • Wireless</p>
+          <div class="product-price">
+            <span class="price">€109</span>
+            <button class="product-cta">Notify me</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section>
+  <div class="container">
+    <div class="newsletter">
+      <h2>Get notified on drops</h2>
+      <p>New products, exclusive deals and hardware insights. No spam, just value.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" class="newsletter-input" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">Mini-PCs</a></li>
+          <li><a href="#">Memory & RAM</a></li>
+          <li><a href="#">Monitors</a></li>
+          <li><a href="#">Storage</a></li>
+          <li><a href="#">Networking</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Shipping policy</a></li>
+          <li><a href="#">Returns & refunds</a></li>
+          <li><a href="#">Privacy policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Track order</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Tech support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X / Twitter</a></li>
+          <li><a href="#">Reddit</a></li>
+          <li><a href="#">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Aetherius Techno Ltd. Hardware without borders.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function handleNewsletter(e) {
+  e.preventDefault();
+  const email = e.target.querySelector('input').value;
+  alert(`Thanks for subscribing! We'll notify you at ${email} when we launch.`);
+  e.target.reset();
+}
+</script>
+
+</body>
+</html>
